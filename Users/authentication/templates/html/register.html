@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register User</title>
+  </head>
+  <body>
+    <h1>Register User</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <p>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required autofocus />
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required autofocus />
+      </p>
+      <p>
+        <label for="password1">Password</label>
+        <input
+          type="password"
+          name="password1"
+          id="password"
+          autofocus
+          required
+        />
+      </p>
+      <p>
+        <label for="password2">Repeat Password</label>
+        <input
+          type="password"
+          name="password2"
+          id="password"
+          required
+          autofocus
+        />
+      </p>
+      <p>
+        <input type="submit" value="Register" autofocus />
+      </p>
+    </form>
+    <a href="{% url 'login' %}">Login</a>
+  </body>
+</html>

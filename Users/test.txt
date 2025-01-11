@@ -1,0 +1,64 @@
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserAuthForms(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             email = form.cleaned_data['email']
+#             password1 = form.cleaned_data['password1']
+#             password2 = form.cleaned_data['password2']
+
+#             if password1 != password2:
+#                 messages.error(request, 'Passwords do not match.')
+#                 return render(request, 'html/register.html', {'form': form})
+
+#             # Check if username or email already exists
+#             if User.objects.filter(username=username).exists():
+#                 messages.error(request, 'Username is already taken.')
+#                 return render(request, 'html/register.html', {'form': form})
+
+#             if User.objects.filter(email=email).exists():
+#                 messages.error(request, 'Email is already registered.')
+#                 return render(request, 'html/register.html', {'form': form})
+
+#             # Create the user
+#             user = User.objects.create_user(
+#                 username=username, email=email, password=password1)
+#             messages.success(
+#                 request, 'Registration successful. You can now log in.')
+#             return redirect('login_user')
+#         else:
+#             # Display form errors
+#             messages.error(request, 'Please correct the errors below.')
+#     else:
+#         form = UserAuthForms()
+
+#     return render(request, 'html/register.html', {'form': form})
+
+
+# def login_user(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             # Use form.cleaned_data for validated data
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+
+#             # Authenticate user
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 # Log the user in
+#                 login(request, user)
+#                 messages.success(request, 'Login successful.')
+#                 # Update 'dashboard' to your actual target view
+#                 return redirect('dashboard')
+#             else:
+#                 # Authentication failed
+#                 messages.error(request, 'Invalid username or password.')
+#         else:
+#             # Form validation failed
+#             messages.error(request, 'Please correct the errors below.')
+#     else:
+#         form = LoginForm()
+
+#     # Render the form with any error messages
+#     return render(request, 'html/login.html', {'form': form})

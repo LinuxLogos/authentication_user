@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login User</h1>
+    <!-- {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Log In</button>
+    </form> -->
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <p>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required autofocus />
+      </p>
+      <p>
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          autofocus
+        />
+      </p>
+      <p>
+        <input type="submit" value="Login" autofocus />
+      </p>
+    </form>
+
+    <a href="{% url 'register' %}">Register</a>
+  </body>
+</html>
